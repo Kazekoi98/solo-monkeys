@@ -1,37 +1,36 @@
 body {
     font-family: Arial, sans-serif;
-    background-image: url('background.jpg');
+    background-image: url('fondo.jpg');
     background-size: cover;
     background-position: center;
     color: white;
+}
+
+.container {
+    max-width: 800px;
+    margin: 50px auto;
+    padding: 20px;
+    background-color: rgba(0, 0, 0, 0.7);
     text-align: center;
 }
 
-header {
-    padding: 20px;
+.logo {
+    width: 100px;
+    height: 100px;
 }
 
-#logo {
+.players {
+    display: flex;
+    justify-content: space-around;
+    margin-top: 20px;
+}
+
+.player {
     width: 150px;
-}
-
-button {
-    background-color: #4CAF50;
-    color: white;
-    border: none;
-    padding: 10px 20px;
-    text-align: center;
-    text-decoration: none;
-    display: inline-block;
-    font-size: 16px;
-    margin: 4px 2px;
-    cursor: pointer;
-    border-radius: 8px;
-}
-
-#matchInfo {
-    background-color: rgba(0, 0, 0, 0.5);
-    margin: 20px;
-    padding: 20px;
-    border-radius: 8px;
+    height: 150px;
+    background-color: #333;
+    margin: 5px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
 }
