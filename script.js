@@ -1,23 +1,27 @@
-const api_key = 'TU_CLAVE_DE_API_DE_OP.GG';
+const players = [
+    { name: 'dislexico#EUW', twitch: 'link_de_twitch_jugador1' },
+    { name: 'marcos306#EUW', twitch: 'link_de_twitch_jugador2' },
+    { name: 'Kayleadentro pto#Kayle', twitch: 'link_de_twitch_jugador3' },
+    { name: 'CocoBoymrs#9537', twitch: 'link_de_twitch_jugador4' },
+    { name: 'kuzanero#EUW', twitch: 'link_de_twitch_jugador5' }
+];
 
-const usernames = ['dislexico#EUW', 'marcos306#EUW', 'Kayleadentro pto#Kayle', 'CocoBoymrs#9537', 'kuzanero#EUW'];
-
-function fetchGameData(username) {
-    fetch(`https://tuurldeapi.com/summoner/${username}?api_key=${api_key}`)
-        .then(response => response.json())
-        .then(data => {
-            const matchData = data.matchHistory[0]; // Aquí deberías ajustar para obtener los datos relevantes
-            document.getElementById('matchInfo').innerHTML += `<p>${username}: Última partida - ${matchData.result}</p>`;
-        })
-        .catch(error => console.error('Error al obtener datos:', error));
+function fetchPlayerData(player) {
+    // Lógica para obtener datos de League of Graphs del jugador y actualizar la página
+    console.log(`Obteniendo datos de League of Graphs para ${player.name}`);
 }
 
-function refreshData() {
-    document.getElementById('matchInfo').innerHTML = ''; // Limpiar la información anterior
-    usernames.forEach(username => {
-        fetchGameData(username);
-    });
+function createTwitchLink(player) {
+    const linkElement = document.createElement('a');
+    linkElement.href = player.twitch;
+    linkElement.target = '_blank';
+    linkElement.innerText = `Streaming de ${player.name} en Twitch`;
+    return linkElement;
 }
 
-// Simulando una llamada inicial al cargar la página
-refreshData();
+// Simular el reinicio de la página al iniciar una partida
+players.forEach(player => {
+    fetchPlayerData(player);
+    const playerElement = document.getElementById(player.name.split(' ').join('-'));
+    playerElement.appendChild(createTwitchLink(player));
+});
